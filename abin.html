@@ -3,6 +3,7 @@
     <head>
         <title>Abin Antony</title>
         <link rel="stylesheet" href="abin.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="mainbody">
@@ -54,7 +55,7 @@
             </div>
             <div class="page3" id="con">
                 <div class="container">
-                    <form action="action_page.php">
+                    <form id="submit-form" action=" ">
                         <h1 class="con-hed">Contact Us</h1>
                         <br>
                         <br>
@@ -66,6 +67,7 @@
                   
                       <label for="country">Country</label>
                       <select id="country" name="country">
+                        <option value="australia">Choose....</option>
                         <option value="australia">India</option>
                         <option value="canada">Canada</option>
                         <option value="canada">Australia</option>
@@ -81,5 +83,24 @@
                   </div>
             </div>
         </div>
+       <script>
+            $("#submit-form").submit((e)=>{
+                e.preventDefault()
+                $.ajax({
+                    url:"https://script.google.com/macros/s/AKfycbySXcLwi4ROoa0g3sqRQESk-bVy0KLsfMo-eHFXkX81wugtkb6blT5XCUifRGjityXx/exec",
+                    data:$("#submit-form").serialize(),
+                    method:"post",
+                    success:function (response){
+                        alert("Form submitted successfully")
+                        window.location.reload()
+                        //window.location.href="https://google.com"
+                    },
+                    error:function (err){
+                        alert("Something Error")
+        
+                    }
+                })
+            })
+        </script>
     </body>
 </html>
